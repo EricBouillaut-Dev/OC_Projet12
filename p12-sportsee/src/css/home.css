@@ -1,0 +1,10 @@
+.home{
+    margin: 45px 100px;
+    padding: 50px;
+    max-width: 1240px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    background-color: var(--color-Kasa-Background);
+    border-radius: 20px;
+}

@@ -1,0 +1,20 @@
+.navbar{
+    margin: 45px 100px;
+    display: flex;
+    justify-content: space-between;
+}
+.nav{
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+.nav-link {
+    font-size: 24px;
+    margin-left: 65px;
+    text-decoration: none;
+    color: var(--color-Kasa);
+}
+.activeLink {
+    border-bottom: 1px solid;
+}
+

@@ -1,13 +1,24 @@
 .navbar{
-    padding: 30px;
+    font-size: 24px;
+    height: 91px;
     display: flex;
     justify-content: center;
     background-color: black;
     color: white;
 }
+.navbar img {
+    width: 58px;
+    height: 58px;
+    margin: auto 10px auto 30px;
+}
 .nav{
     list-style: none;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
+    margin-right: 50px;
+}
+.sportsee {
+    color: var(--red-SportSee);
 }

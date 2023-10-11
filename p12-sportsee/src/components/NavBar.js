@@ -1,8 +1,11 @@
+import Logo from "../assets/logo.svg";
+
 function NavBar() {
   return (
     <div className="navbar">
+      <img src={Logo} alt="Logo" />
       <ul className="nav">
-        <li>SportSee</li>
+        <li className="sportsee">SportSee</li>
         <li>Accueil</li>
         <li>Profil</li>
         <li>Réglages</li>

@@ -3,9 +3,12 @@
     padding: 0;
     max-width: 1440px;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    --color-Kasa: #FF6060;
-    --color-Kasa-Background: #F6F6F6;
-    --color-Kasa-EmptyStar: #E3E3E3;
+    --red-SportSee: #E60000;
+    --red-Title: #FF0101;
+    --black-nav: #020203;
+    --black-bar: #282D30;
+    --background-Activity: #FBFBFB;
+    
 }

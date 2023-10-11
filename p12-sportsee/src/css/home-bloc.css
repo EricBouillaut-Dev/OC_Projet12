@@ -1,4 +1,4 @@
 .home-bloc {
     display: flex;
-
+    min-height: 1024px;
 }

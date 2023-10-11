@@ -1,0 +1,20 @@
+.custom-tooltip {
+    width: 40px;
+    height: 64px;
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    background-color: var(--red-SportSee);
+    color: white;
+    font-size: 9px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.activity {
+    display: flex;
+    align-items: center;
+    width: 835px;
+    height: 320px;
+    background-color: var(--background-Activity);
+}

@@ -1,0 +1,10 @@
+.icon {
+    margin: 10px;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}

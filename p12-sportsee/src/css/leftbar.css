@@ -1,13 +1,20 @@
 .leftbar {
-    padding: 20px;
+    width: 117px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+}
+.leftbar-Icon {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: black;
-    color: white;
-
+    align-items: center;
 }
 .copyright {
-    /* margin:0 150px; */
+    font-size: 12px;
+    text-wrap: nowrap;
+    margin-bottom: 100px;
     transform: rotate(-90deg);
 }

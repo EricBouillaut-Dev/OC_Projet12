@@ -7,3 +7,7 @@
     color: white;
 
 }
+.copyright {
+    /* margin:0 150px; */
+    transform: rotate(-90deg);
+}

@@ -7,6 +7,7 @@ function LeftBar() {
       <Icon content="" />
       <Icon content="" />
       <Icon content="" />
+      <span className="copyright">Copyright SportSee 2020</span>
     </div>
   );
 }

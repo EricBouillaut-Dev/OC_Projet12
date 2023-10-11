@@ -1,20 +1,13 @@
 .navbar{
-    margin: 45px 100px;
+    padding: 30px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    background-color: black;
+    color: white;
 }
 .nav{
     list-style: none;
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
-.nav-link {
-    font-size: 24px;
-    margin-left: 65px;
-    text-decoration: none;
-    color: var(--color-Kasa);
-}
-.activeLink {
-    border-bottom: 1px solid;
-}
-

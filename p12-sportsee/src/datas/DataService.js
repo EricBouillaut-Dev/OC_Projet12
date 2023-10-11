@@ -5,10 +5,9 @@ import {
   mockUserPerformance,
 } from "./mockData";
 
-const mockid = "_mock";
+const mockid = mockUserData[0].id;
 
 export const getUserData = async (userId) => {
-  console.log(userId);
   if (userId === mockid) {
     return mockUserData[0];
   }

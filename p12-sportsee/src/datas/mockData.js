@@ -4,7 +4,7 @@ const mockUserData = [
     id: mockId,
     userInfos: {
       firstName: "John",
-      lastName: "Doe",
+      lastName: "Smith",
       age: 25,
     },
     todayScore: 0.5,

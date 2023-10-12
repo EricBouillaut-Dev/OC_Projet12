@@ -38,7 +38,7 @@ function Home() {
     if (userId) {
       fetchData();
     }
-  }, [userId]);
+  }, [userId, navigate]);
 
   return (
     <div className="home-content">

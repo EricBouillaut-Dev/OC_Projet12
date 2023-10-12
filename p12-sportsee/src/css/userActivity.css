@@ -1,4 +1,6 @@
 .custom-tooltip {
+    margin-left: 50px;
+    margin-top: -50px;
     width: 40px;
     height: 64px;
     display: flex;
@@ -7,6 +9,7 @@
     background-color: var(--red-SportSee);
     color: white;
     font-size: 9px;
+    justify-content: spa;
     justify-content: space-between;
     align-items: center;
 }
@@ -18,3 +21,11 @@
     height: 320px;
     background-color: var(--background-Activity);
 }
+.activity-legend{
+    display: flex;
+    font-size: 64px;
+    position: absolute;
+    top: -10px;
+    right: 200px;
+}
+

@@ -15,6 +15,9 @@
 .copyright {
     font-size: 12px;
     text-wrap: nowrap;
-    margin-bottom: 100px;
+    margin-bottom: 200px;
     transform: rotate(-90deg);
 }
+/* .routes {
+    flex: 1;
+} */

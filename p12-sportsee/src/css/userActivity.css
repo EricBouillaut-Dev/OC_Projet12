@@ -19,13 +19,5 @@
     align-items: center;
     width: 835px;
     height: 320px;
-    background-color: var(--background-Activity);
+    background-color: var(--background);
 }
-.activity-legend{
-    display: flex;
-    font-size: 64px;
-    position: absolute;
-    top: -10px;
-    right: 200px;
-}
-

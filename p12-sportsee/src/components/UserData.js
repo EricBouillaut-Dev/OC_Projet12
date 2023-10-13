@@ -5,18 +5,13 @@ function UserData({ data }) {
     return null;
   }
 
-  const { userInfos, todayScore, keyData } = data;
+  const { userInfos } = data;
   return (
-    <div>
-      <h2>User Data</h2>
-      <p>First Name: {userInfos.firstName}</p>
-      <p>Last Name: {userInfos.lastName}</p>
-      <p>Age: {userInfos.age}</p>
-      <p>Today's Score: {todayScore}</p>
-      <p>Calorie Count: {keyData.calorieCount}</p>
-      <p>Protein Count: {keyData.proteinCount}</p>
-      <p>Carbohydrate Count: {keyData.carbohydrateCount}</p>
-      <p>Lipid Count: {keyData.lipidCount}</p>
+    <div className="user-title">
+      <h2>
+        Bonjour <span className="user-info">{userInfos.firstName}</span>
+      </h2>
+      <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
     </div>
   );
 }

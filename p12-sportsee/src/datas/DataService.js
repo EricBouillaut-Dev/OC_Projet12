@@ -43,7 +43,6 @@ async function fetchData(url) {
       throw new Error("La requête a échoué.");
     }
     const result = await response.json();
-    console.log("dataServices:", result.data);
     return result.data;
   } catch (error) {
     throw error;

@@ -5,78 +5,47 @@ import {
   mockUserPerformance,
 } from "./mockData";
 
-const mockid = mockUserData[0].id;
+const mockData = {
+  userData: mockUserData[0],
+  userActivity: mockUserActivity[0],
+  userAverageSessions: mockUserAverageSessions[0],
+  userPerformance: mockUserPerformance[0],
+};
 
 export const getUserData = async (userId) => {
-  if (userId === mockid) {
-    return mockUserData[0];
-  }
-
-  try {
-    const response = await fetch(`http://localhost:5000/user/${userId}`);
-    if (!response.ok) {
-      throw new Error("La requête a échoué.");
-    }
-    const data = await response.json();
-    return data.data;
-  } catch (error) {
-    throw error;
-  }
+  return userId === mockData.userData.id
+    ? mockData.userData
+    : fetchData(`http://localhost:5000/user/${userId}`);
 };
 
 export const getUserActivity = async (userId) => {
-  if (userId === mockid) {
-    return mockUserActivity[0];
-  }
-
-  try {
-    const response = await fetch(
-      `http://localhost:5000/user/${userId}/activity`
-    );
-    if (!response.ok) {
-      throw new Error("La requête a échoué.");
-    }
-    const data = await response.json();
-    return data.data;
-  } catch (error) {
-    throw error;
-  }
+  return userId === mockData.userData.id
+    ? mockData.userActivity
+    : fetchData(`http://localhost:5000/user/${userId}/activity`);
 };
 
 export const getUserAverageSessions = async (userId) => {
-  if (userId === mockid) {
-    return mockUserAverageSessions[0];
-  }
-
-  try {
-    const response = await fetch(
-      `http://localhost:5000/user/${userId}/average-sessions`
-    );
-    if (!response.ok) {
-      throw new Error("La requête a échoué.");
-    }
-    const data = await response.json();
-    return data.data;
-  } catch (error) {
-    throw error;
-  }
+  return userId === mockData.userData.id
+    ? mockData.userAverageSessions
+    : fetchData(`http://localhost:5000/user/${userId}/average-sessions`);
 };
 
 export const getUserPerformance = async (userId) => {
-  if (userId === mockid) {
-    return mockUserPerformance[0];
-  }
+  return userId === mockData.userData.id
+    ? mockData.userPerformance
+    : fetchData(`http://localhost:5000/user/${userId}/performance`);
+};
 
+async function fetchData(url) {
   try {
-    const response = await fetch(
-      `http://localhost:5000/user/${userId}/performance`
-    );
+    const response = await fetch(url);
     if (!response.ok) {
       throw new Error("La requête a échoué.");
     }
-    const data = await response.json();
-    return data.data;
+    const result = await response.json();
+    console.log("dataServices:", result.data);
+    return result.data;
   } catch (error) {
     throw error;
   }
-};
+}

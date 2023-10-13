@@ -23,16 +23,25 @@ function Home() {
   const [userActivity, setUserActivity] = useState(null);
   const [userAverageSessions, setUserAverageSessions] = useState(null);
   const [userPerformance, setUserPerformance] = useState(null);
+
   const { userId } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userDataResult = await getUserData(userId);
-        const userActivityResult = await getUserActivity(userId);
-        const userAverageSessionsResult = await getUserAverageSessions(userId);
-        const userPerformanceResult = await getUserPerformance(userId);
+        const [
+          userDataResult,
+          userActivityResult,
+          userAverageSessionsResult,
+          userPerformanceResult,
+        ] = await Promise.all([
+          getUserData(userId),
+          getUserActivity(userId),
+          getUserAverageSessions(userId),
+          getUserPerformance(userId),
+        ]);
+
         setUserData(userDataResult);
         setUserActivity(userActivityResult);
         setUserAverageSessions(userAverageSessionsResult);
@@ -41,64 +50,77 @@ function Home() {
         navigate("/error");
       }
     };
-
-    if (userId) {
-      fetchData();
-    }
+    fetchData();
   }, [userId, navigate]);
-  const { calorieCount, proteinCount, carbohydrateCount, lipidCount } = {
-    ...userData.keyData,
-  };
-  const formattedCalories = (calorieCount / 1000).toLocaleString("fr-FR");
 
   return (
-    <div className="home-content">
-      <UserData data={userData} />
-      <div className="home-main">
-        <div className="home-middle">
-          <UserActivity data={userActivity} />
-          <div className="home-bottom">
-            <UserSessions data={userAverageSessions} />
-            <UserIntensity data={userPerformance} />
-            <UserScore data={userPerformance} />
+    <>
+      {userData && userActivity && userAverageSessions && userPerformance && (
+        <>
+          <div className="home-content">
+            <UserData data={userData} />
+            <div className="home-main">
+              <div className="home-middle">
+                <UserActivity data={userActivity} />
+                <div className="home-bottom">
+                  <UserSessions data={userAverageSessions} />
+                  <UserIntensity data={userPerformance} />
+                  <UserScore data={userPerformance} />
+                </div>
+              </div>
+              <div className="home-right">
+                <UserNutriment
+                  key="nutriment1"
+                  data={`${(
+                    userData.keyData.calorieCount / 1000
+                  ).toLocaleString("fr-FR")}kCal`}
+                  title="Calories"
+                  icon={
+                    <Icon
+                      image={Flamme}
+                      backgroundColor="rgba(255, 0, 0, 0.0661)"
+                    />
+                  }
+                />
+                <UserNutriment
+                  key="nutriment2"
+                  data={`${userData.keyData.proteinCount}g`}
+                  title="Proteines"
+                  icon={
+                    <Icon
+                      image={Grenade}
+                      backgroundColor="rgba(74, 184, 255, 0.1)"
+                    />
+                  }
+                />
+                <UserNutriment
+                  key="nutriment3"
+                  data={`${userData.keyData.carbohydrateCount}g`}
+                  title="Glucides"
+                  icon={
+                    <Icon
+                      image={Pomme}
+                      backgroundColor="rgba(249, 206, 35, 0.1)"
+                    />
+                  }
+                />
+                <UserNutriment
+                  key="nutriment4"
+                  data={`${userData.keyData.lipidCount}g`}
+                  title="Lipides"
+                  icon={
+                    <Icon
+                      image={Burger}
+                      backgroundColor="rgba(253, 81, 129, 0.1)"
+                    />
+                  }
+                />
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="home-right">
-          <UserNutriment
-            key="nutriment1"
-            data={`${formattedCalories}kCal`}
-            title="Calories"
-            icon={
-              <Icon image={Flamme} backgroundColor="rgba(255, 0, 0, 0.0661)" />
-            }
-          />
-          <UserNutriment
-            key="nutriment2"
-            data={`${proteinCount}g`}
-            title="Proteines"
-            icon={
-              <Icon image={Grenade} backgroundColor="rgba(74, 184, 255, 0.1)" />
-            }
-          />
-          <UserNutriment
-            key="nutriment3"
-            data={`${carbohydrateCount}g`}
-            title="Glucides"
-            icon={
-              <Icon image={Pomme} backgroundColor="rgba(249, 206, 35, 0.1)" />
-            }
-          />
-          <UserNutriment
-            key="nutriment4"
-            data={`${lipidCount}g`}
-            title="Lipides"
-            icon={
-              <Icon image={Burger} backgroundColor="rgba(253, 81, 129, 0.1)" />
-            }
-          />
-        </div>
-      </div>
-    </div>
+        </>
+      )}
+    </>
   );
 }
 

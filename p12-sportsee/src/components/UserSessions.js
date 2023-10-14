@@ -12,12 +12,11 @@ function UserSessions({ data }) {
   if (!data) {
     return null;
   }
-  console.log(data);
   const CustomTooltip = ({ active, payload }) => {
     if (active) {
       return (
         <div className="custom-tooltip_line">
-          <span style={{ pointerEvents: "none" }}>{payload[0].value} min</span>
+          <span>{payload[0].value} min</span>
         </div>
       );
     }
@@ -27,7 +26,9 @@ function UserSessions({ data }) {
 
   const CustomCursor = ({ points, width }) => {
     const { x } = points[0];
-    return <Rectangle fill="#00000010" x={x} width={width} height={260} />;
+    return (
+      <Rectangle fill="rgba(0, 0, 0, 0.1)" x={x} width={width} height={260} />
+    );
   };
 
   const CustomDot = ({ cx, cy }) => {
@@ -35,17 +36,17 @@ function UserSessions({ data }) {
       <Dot
         cx={cx}
         cy={cy}
-        fill="#fff"
+        fill="white"
         r={4}
-        stroke="#ffffff50"
+        stroke="rgba(255, 255, 255, 0.5)"
         strokeWidth={10}
       />
     );
   };
 
-  const daysOfWeek = ["L", "M", "M", "J", "V", "S", "D"];
+  const newXaxis = ["L", "M", "M", "J", "V", "S", "D"];
   const lineData = data.sessions.map((session, index) => ({
-    day: daysOfWeek[index],
+    day: newXaxis[index],
     sessionLength: session.sessionLength,
   }));
   const firstDayValue = lineData[0].sessionLength;
@@ -56,7 +57,7 @@ function UserSessions({ data }) {
 
   return (
     <div className="user-sessions">
-      <LineChart width={300} height={263} data={lineData}>
+      <LineChart width={300} height={260} data={lineData}>
         <text x={50} y={40} fill="rgba(255, 255, 255, 0.5)">
           <tspan>Durée moyenne des</tspan>
           <tspan x={50} dy={20}>

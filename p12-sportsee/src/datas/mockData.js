@@ -31,6 +31,31 @@ const mockUserActivity = [
         kilogram: 71,
         calories: 220,
       },
+      {
+        day: "2022-01-03",
+        kilogram: 69,
+        calories: 340,
+      },
+      {
+        day: "2022-01-04",
+        kilogram: 65,
+        calories: 460,
+      },
+      {
+        day: "2022-01-05",
+        kilogram: 70,
+        calories: 180,
+      },
+      {
+        day: "2022-01-06",
+        kilogram: 75,
+        calories: 50,
+      },
+      {
+        day: "2022-01-07",
+        kilogram: 71,
+        calories: 320,
+      },
     ],
   },
 ];
@@ -41,11 +66,31 @@ const mockUserAverageSessions = [
     sessions: [
       {
         day: 1,
-        sessionLength: 30,
+        sessionLength: 20,
       },
       {
         day: 2,
-        sessionLength: 35,
+        sessionLength: 30,
+      },
+      {
+        day: 3,
+        sessionLength: 25,
+      },
+      {
+        day: 4,
+        sessionLength: 80,
+      },
+      {
+        day: 5,
+        sessionLength: 60,
+      },
+      {
+        day: 6,
+        sessionLength: 70,
+      },
+      {
+        day: 7,
+        sessionLength: 30,
       },
     ],
   },
@@ -64,12 +109,28 @@ const mockUserPerformance = [
     },
     data: [
       {
-        value: 85,
+        value: 95,
         kind: 1,
       },
       {
         value: 130,
         kind: 2,
+      },
+      {
+        value: 25,
+        kind: 3,
+      },
+      {
+        value: 75,
+        kind: 4,
+      },
+      {
+        value: 120,
+        kind: 5,
+      },
+      {
+        value: 85,
+        kind: 6,
       },
     ],
   },

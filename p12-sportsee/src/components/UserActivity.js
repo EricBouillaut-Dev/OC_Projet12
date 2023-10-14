@@ -20,7 +20,7 @@ function UserActivity({ data }) {
   const CustomTooltip = ({ active, payload }) => {
     if (active) {
       return (
-        <div className="custom-tooltip">
+        <div className="custom-tooltip_bar">
           <span>{payload[0].value}kg</span>
           <span>{payload[1].value}kCal</span>
         </div>

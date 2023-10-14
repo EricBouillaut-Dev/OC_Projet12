@@ -22,6 +22,11 @@ function HomeUser() {
         placeholder="Entrez l'ID de l'utilisateur"
         value={userId}
         onChange={handleUserIdChange}
+        onKeyDown={(event) => {
+          if (event.key === "Enter" && userId) {
+            navigate(`/user/${userId}`);
+          }
+        }}
       />
       <button onClick={handleGoToUser}>Aller au Dashboard</button>
     </div>

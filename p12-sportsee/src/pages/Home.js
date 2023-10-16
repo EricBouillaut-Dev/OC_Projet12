@@ -3,19 +3,14 @@ import { useParams, useNavigate } from "react-router-dom";
 import UserData from "../components/UserData";
 import UserActivity from "../components/UserActivity";
 import UserSessions from "../components/UserSessions";
-import UserIntensity from "../components/UserIntensity";
+import UserRadar from "../components/UserRadar";
 import UserScore from "../components/UserScore";
 import UserNutriment from "../components/UserNutriment";
 import Flamme from "../assets/flamme.svg";
 import Grenade from "../assets/grenade.svg";
 import Pomme from "../assets/pomme.svg";
 import Burger from "../assets/burger.svg";
-import {
-  getUserData,
-  getUserActivity,
-  getUserAverageSessions,
-  getUserPerformance,
-} from "../datas/DataService";
+import { userDataFactory } from "../datas/DataService";
 import Icon from "../components/Icon";
 
 function Home() {
@@ -28,6 +23,8 @@ function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const userDataInstance = userDataFactory(userId);
+
     const fetchData = async () => {
       try {
         const [
@@ -36,10 +33,10 @@ function Home() {
           userAverageSessionsResult,
           userPerformanceResult,
         ] = await Promise.all([
-          getUserData(userId),
-          getUserActivity(userId),
-          getUserAverageSessions(userId),
-          getUserPerformance(userId),
+          userDataInstance.getUserData(),
+          userDataInstance.getUserActivity(),
+          userDataInstance.getUserAverageSessions(),
+          userDataInstance.getUserPerformance(),
         ]);
 
         setUserData(userDataResult);
@@ -63,7 +60,7 @@ function Home() {
               <UserActivity data={userActivity} />
               <div className="home-bottom">
                 <UserSessions data={userAverageSessions} />
-                <UserIntensity data={userPerformance} />
+                <UserRadar data={userPerformance} />
                 <UserScore data={userPerformance} />
               </div>
             </div>

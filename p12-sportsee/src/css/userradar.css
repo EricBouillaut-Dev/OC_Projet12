@@ -1,8 +1,9 @@
-.user-intensity {
-    /* margin: 10px; */
+.user-radar {
+    /* margin-top: 50px; */
     font-size: 12px;
     width: 260px;
     height: 260px;
     border-radius: 5px;
     background-color: var(--black-intensity);
+    /* line-height: 200%; */
 }

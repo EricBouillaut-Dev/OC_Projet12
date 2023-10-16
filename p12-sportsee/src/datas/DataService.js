@@ -12,28 +12,29 @@ const mockData = {
   userPerformance: mockUserPerformance[0],
 };
 
-export const getUserData = async (userId) => {
-  return userId === mockData.userData.id
-    ? mockData.userData
-    : fetchData(`http://localhost:5000/user/${userId}`);
-};
-
-export const getUserActivity = async (userId) => {
-  return userId === mockData.userData.id
-    ? mockData.userActivity
-    : fetchData(`http://localhost:5000/user/${userId}/activity`);
-};
-
-export const getUserAverageSessions = async (userId) => {
-  return userId === mockData.userData.id
-    ? mockData.userAverageSessions
-    : fetchData(`http://localhost:5000/user/${userId}/average-sessions`);
-};
-
-export const getUserPerformance = async (userId) => {
-  return userId === mockData.userData.id
-    ? mockData.userPerformance
-    : fetchData(`http://localhost:5000/user/${userId}/performance`);
+export const userDataFactory = (userId) => {
+  return {
+    getUserData: async () => {
+      return userId === mockData.userData.id
+        ? mockData.userData
+        : fetchData(`http://localhost:5000/user/${userId}`);
+    },
+    getUserActivity: async () => {
+      return userId === mockData.userData.id
+        ? mockData.userActivity
+        : fetchData(`http://localhost:5000/user/${userId}/activity`);
+    },
+    getUserAverageSessions: async () => {
+      return userId === mockData.userData.id
+        ? mockData.userAverageSessions
+        : fetchData(`http://localhost:5000/user/${userId}/average-sessions`);
+    },
+    getUserPerformance: async () => {
+      return userId === mockData.userData.id
+        ? mockData.userPerformance
+        : fetchData(`http://localhost:5000/user/${userId}/performance`);
+    },
+  };
 };
 
 async function fetchData(url) {

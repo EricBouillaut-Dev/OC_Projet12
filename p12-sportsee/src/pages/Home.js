@@ -61,7 +61,7 @@ function Home() {
               <div className="home-bottom">
                 <UserSessions data={userAverageSessions} />
                 <UserRadar data={userPerformance} />
-                <UserScore data={userPerformance} />
+                <UserScore data={userData} />
               </div>
             </div>
             <div className="home-right">

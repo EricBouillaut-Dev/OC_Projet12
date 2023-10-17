@@ -58,9 +58,9 @@ function UserSessions({ data }) {
   return (
     <div className="user-sessions">
       <LineChart width={300} height={260} data={lineData}>
-        <text x={50} y={40} fill="rgba(255, 255, 255, 0.5)">
+        <text x={55} y={42} fill="rgba(255, 255, 255, 0.5)">
           <tspan>Durée moyenne des</tspan>
-          <tspan x={50} dy={20}>
+          <tspan x={55} dy={22}>
             sessions
           </tspan>
         </text>

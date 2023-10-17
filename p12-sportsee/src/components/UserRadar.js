@@ -24,16 +24,18 @@ function UserRadar({ data }) {
   if (!data) {
     return null;
   }
-  const kindLabels = {
-    1: "Cardio",
-    2: "Energie",
-    3: "Endurance",
-    4: "Force",
-    5: "Vitesse",
-    6: "Intensité",
-  };
+  console.log(data);
+
+  const kindLabels = data.kind;
+
   const transformedData = data.data.map((item) => ({
-    kind: kindLabels[item.kind],
+    kind: kindLabels[item.kind]
+      .replace("cardio", "Cardio")
+      .replace("strength", "Force")
+      .replace("endurance", "Endurance")
+      .replace("speed", "Vitesse")
+      .replace("intensity", "Intensité")
+      .replace("energy", "Energie"),
     value: item.value,
   }));
 

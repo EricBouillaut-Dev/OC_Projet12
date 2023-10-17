@@ -5,7 +5,7 @@ import UserActivity from "../components/UserActivity";
 import UserSessions from "../components/UserSessions";
 import UserRadar from "../components/UserRadar";
 import UserScore from "../components/UserScore";
-import UserNutriment from "../components/UserNutriment";
+import UserCard from "../components/UserCard";
 import Flamme from "../assets/flamme.svg";
 import Grenade from "../assets/grenade.svg";
 import Pomme from "../assets/pomme.svg";
@@ -65,8 +65,8 @@ function Home() {
               </div>
             </div>
             <div className="home-right">
-              <UserNutriment
-                key="nutriment1"
+              <UserCard
+                key="card01"
                 data={`${(userData.keyData.calorieCount / 1000).toLocaleString(
                   "fr-FR"
                 )}kCal`}
@@ -78,8 +78,8 @@ function Home() {
                   />
                 }
               />
-              <UserNutriment
-                key="nutriment2"
+              <UserCard
+                key="card02"
                 data={`${userData.keyData.proteinCount}g`}
                 title="Proteines"
                 icon={
@@ -89,8 +89,8 @@ function Home() {
                   />
                 }
               />
-              <UserNutriment
-                key="nutriment3"
+              <UserCard
+                key="card03"
                 data={`${userData.keyData.carbohydrateCount}g`}
                 title="Glucides"
                 icon={
@@ -100,8 +100,8 @@ function Home() {
                   />
                 }
               />
-              <UserNutriment
-                key="nutriment4"
+              <UserCard
+                key="card04"
                 data={`${userData.keyData.lipidCount}g`}
                 title="Lipides"
                 icon={

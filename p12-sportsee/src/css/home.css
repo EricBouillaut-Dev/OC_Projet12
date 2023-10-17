@@ -1,10 +1,79 @@
-.home{
-    margin: 45px 100px;
-    padding: 50px;
-    max-width: 1240px;
+.home-user {
     display: flex;
-    flex-wrap: wrap;
-    gap: 50px;
-    background-color: var(--color-Kasa-Background);
-    border-radius: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-basis: 100%;
+    gap: 1rem;
+  }
+  
+  .home-user input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    font-size: 32px;
+    width: 500px;
+    max-width: 100%;
+}
+  
+.home-user button {
+    padding: 15px 20px;
+    border-radius: 30px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+  
+  .home-user button:hover {
+    background-color: #0069d9;
+  }
+  
+  .home-content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin: auto;
+}
+
+.home-middle {
+    margin: 30px 0 30px 0;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    /* gap: 10px ; */
+}
+
+.home-main {
+    margin: 30px 0 30px 0;
+    display: flex;
+    /* justify-content: space-between; */
+    /* gap: 10px ; */
+}
+
+.home-bottom {
+    margin: 30px 0 30px 0;
+    display: flex;
+    justify-content: space-between;
+    /* gap: 10px ; */
+}
+
+.home-right {
+    margin: 30px 0 60px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* gap: 10px ; */
+}
+
+.home-bloc {
+    display: flex;
+    height: 100vh;
+    /* min-height: 1024px; */
 }

@@ -1,14 +1,14 @@
 import React from "react";
 
-function UserNutriment({ data, title, icon }) {
+function UserCard({ data, title, icon }) {
   if (!data) {
     return null;
   }
 
   return (
-    <div className="user-nutriment">
+    <div className="user-card">
       <span>{icon}</span>
-      <div className="user-nutriment_right">
+      <div className="user-Card_right">
         <h2>{data}</h2>
         <h3>{title}</h3>
       </div>
@@ -16,4 +16,4 @@ function UserNutriment({ data, title, icon }) {
   );
 }
 
-export default UserNutriment;
+export default UserCard;

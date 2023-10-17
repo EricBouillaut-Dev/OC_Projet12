@@ -1,14 +1,11 @@
 @import './home.css';
 @import './navbar.css';
 @import './leftbar.css';
-@import './home-bloc.css';
-@import './home-content.css';
 @import './icon.css';
 @import './userActivity.css';
 @import './userdata.css';
 @import './usersessions.css';
 @import './userradar.css';
 @import './userscore.css';
-@import './usernutriment.css';
+@import './usercard.css';
 @import './error.css';
-@import './home-user.css';

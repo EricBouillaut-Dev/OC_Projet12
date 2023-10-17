@@ -1,13 +1,13 @@
-.user-nutriment {
+.user-card {
     padding-left: 20px;
     display: flex;
-    /* justify-content: center; */
+    cursor: pointer;
     align-items: center;
     width: 258px;
     height: 124px;
     background-color: var(--background);
 }
-.user-nutriment_right {
+.user-card_right {
     display: flex;
     flex-direction: column;
     font-size: 14px;

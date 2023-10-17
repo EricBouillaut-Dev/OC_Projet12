@@ -21,3 +21,11 @@
     height: 320px;
     background-color: var(--background);
 }
+
+.recharts-legend-item.recharts-legend-item.legend-item-0 {
+    padding-right: 28px;
+}
+.recharts-legend-item-text {
+    margin-left: 5px;
+    color: #74798C !important;
+}

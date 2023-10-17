@@ -1,16 +1,21 @@
 .user-title h2 {
+    display: flex;
     font-size: 48px;
-
-
+    gap: 12px;
 }
 
 .user-title p {
     font-size: 18px;
     font-weight: 400;
-
 }
 
 .user-info {
     color: var(--red-User);
+}
+.user-content {
+    margin: 20px 0 20px 2px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
 }
 

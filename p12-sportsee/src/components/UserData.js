@@ -1,4 +1,5 @@
 import React from "react";
+import Clap from "../assets/clap.png";
 
 function UserData({ data }) {
   if (!data) {
@@ -11,7 +12,10 @@ function UserData({ data }) {
       <h2>
         Bonjour <span className="user-info">{userInfos.firstName}</span>
       </h2>
-      <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+      <p className="user-content">
+        Félicitation ! Vous avez explosé vos objectifs hier
+        <img src={Clap} alt="clap" />
+      </p>
     </div>
   );
 }

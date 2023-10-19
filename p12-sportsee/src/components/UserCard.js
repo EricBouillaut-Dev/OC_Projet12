@@ -8,7 +8,7 @@ function UserCard({ data, title, icon }) {
   return (
     <div className="user-card">
       <span>{icon}</span>
-      <div className="user-Card_right">
+      <div className="user-card_right">
         <h2>{data}</h2>
         <h3>{title}</h3>
       </div>

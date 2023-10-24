@@ -6,6 +6,8 @@
     height: 260px;
     border-radius: 5px;
     background-color: red;
+    
+    /* Permet de cacher le dépassement de la courbe */
     overflow: hidden;
 }
 

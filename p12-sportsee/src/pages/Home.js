@@ -14,19 +14,24 @@ import { userDataFactory } from "../datas/DataService";
 import Icon from "../components/Icon";
 
 function Home() {
+  // États pour stocker les données de l'utilisateur
   const [userData, setUserData] = useState(null);
   const [userActivity, setUserActivity] = useState(null);
   const [userAverageSessions, setUserAverageSessions] = useState(null);
   const [userPerformance, setUserPerformance] = useState(null);
 
+  // Obtient le "userId" à partir de l'URL
   const { userId } = useParams();
   const navigate = useNavigate();
 
+  // Effet qui se déclenche lorsque le composant est monté
   useEffect(() => {
     const userDataInstance = userDataFactory(userId);
 
+    // Fonction asynchrone pour récupérer les données de l'utilisateur
     const fetchData = async () => {
       try {
+        // Récupère plusieurs ensembles de données en parallèle
         const [
           userDataResult,
           userActivityResult,
@@ -39,11 +44,13 @@ function Home() {
           userDataInstance.getUserPerformance(),
         ]);
 
+        // Stocke les données dans les états correspondants
         setUserData(userDataResult);
         setUserActivity(userActivityResult);
         setUserAverageSessions(userAverageSessionsResult);
         setUserPerformance(userPerformanceResult);
       } catch (error) {
+        // En cas d'erreur, redirige vers une page d'erreur
         navigate("/error");
       }
     };
@@ -52,6 +59,7 @@ function Home() {
 
   return (
     <>
+      {/* Affiche le contenu de la page uniquement si toutes les données sont disponibles */}
       {userData && userActivity && userAverageSessions && userPerformance && (
         <div className="home-content">
           <UserData data={userData} />
@@ -65,6 +73,7 @@ function Home() {
               </div>
             </div>
             <div className="home-right">
+              {/* Cartes d'informations avec des icônes personnalisées */}
               <UserCard
                 key="card01"
                 data={`${(userData.keyData.calorieCount / 1000).toLocaleString(

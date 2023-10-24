@@ -24,7 +24,6 @@ function UserRadar({ data }) {
   if (!data) {
     return null;
   }
-  console.log(data);
 
   const kindLabels = data.kind;
 

@@ -27,5 +27,6 @@
 }
 .recharts-legend-item-text {
     margin-left: 5px;
+    /* Met en priorité la bonne couleur de la légende (noir et non rouge) */
     color: #74798C !important;
 }

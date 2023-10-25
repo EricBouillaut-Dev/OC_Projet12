@@ -10,7 +10,7 @@ import Flamme from "../assets/flamme.svg";
 import Grenade from "../assets/grenade.svg";
 import Pomme from "../assets/pomme.svg";
 import Burger from "../assets/burger.svg";
-import { userDataFactory } from "../datas/DataService";
+import { UserDataModelAPI, UserDataModelMock } from "../datas/DataService";
 import Icon from "../components/Icon";
 
 function Home() {
@@ -26,7 +26,8 @@ function Home() {
 
   // Effet qui se déclenche lorsque le composant est monté
   useEffect(() => {
-    const userDataInstance = userDataFactory(userId);
+    const userDataInstance = new UserDataModelAPI(userId);
+    // const userDataInstance = new UserDataModelMock(userId);
 
     // Fonction asynchrone pour récupérer les données de l'utilisateur
     const fetchData = async () => {
@@ -63,64 +64,55 @@ function Home() {
       {userData && userActivity && userAverageSessions && userPerformance && (
         <div className="home-content">
           <UserData data={userData} />
-          <div className="home-main">
-            <div className="home-middle">
-              <UserActivity data={userActivity} />
-              <div className="home-bottom">
-                <UserSessions data={userAverageSessions} />
-                <UserRadar data={userPerformance} />
-                <UserScore data={userData} />
-              </div>
-            </div>
-            <div className="home-right">
-              {/* Cartes d'informations avec des icônes personnalisées */}
-              <UserCard
-                key="card01"
-                data={`${(userData.keyData.calorieCount / 1000).toLocaleString(
-                  "fr-FR"
-                )}kCal`}
-                title="Calories"
-                icon={
-                  <Icon
-                    image={Flamme}
-                    backgroundColor="rgba(255, 0, 0, 0.0661)"
-                  />
-                }
-              />
-              <UserCard
-                key="card02"
-                data={`${userData.keyData.proteinCount}g`}
-                title="Proteines"
-                icon={
-                  <Icon
-                    image={Grenade}
-                    backgroundColor="rgba(74, 184, 255, 0.1)"
-                  />
-                }
-              />
-              <UserCard
-                key="card03"
-                data={`${userData.keyData.carbohydrateCount}g`}
-                title="Glucides"
-                icon={
-                  <Icon
-                    image={Pomme}
-                    backgroundColor="rgba(249, 206, 35, 0.1)"
-                  />
-                }
-              />
-              <UserCard
-                key="card04"
-                data={`${userData.keyData.lipidCount}g`}
-                title="Lipides"
-                icon={
-                  <Icon
-                    image={Burger}
-                    backgroundColor="rgba(253, 81, 129, 0.1)"
-                  />
-                }
-              />
-            </div>
+          <UserActivity data={userActivity} />
+          <UserSessions data={userAverageSessions} />
+          <UserRadar data={userPerformance} />
+          <UserScore data={userData} />
+          <div className="home-right">
+            {/* Cartes d'informations avec des icônes personnalisées */}
+            <UserCard
+              key="card01"
+              data={`${(userData.keyData.calorieCount / 1000).toLocaleString(
+                "fr-FR"
+              )}kCal`}
+              title="Calories"
+              icon={
+                <Icon
+                  image={Flamme}
+                  backgroundColor="rgba(255, 0, 0, 0.0661)"
+                />
+              }
+            />
+            <UserCard
+              key="card02"
+              data={`${userData.keyData.proteinCount}g`}
+              title="Proteines"
+              icon={
+                <Icon
+                  image={Grenade}
+                  backgroundColor="rgba(74, 184, 255, 0.1)"
+                />
+              }
+            />
+            <UserCard
+              key="card03"
+              data={`${userData.keyData.carbohydrateCount}g`}
+              title="Glucides"
+              icon={
+                <Icon image={Pomme} backgroundColor="rgba(249, 206, 35, 0.1)" />
+              }
+            />
+            <UserCard
+              key="card04"
+              data={`${userData.keyData.lipidCount}g`}
+              title="Lipides"
+              icon={
+                <Icon
+                  image={Burger}
+                  backgroundColor="rgba(253, 81, 129, 0.1)"
+                />
+              }
+            />
           </div>
         </div>
       )}

@@ -6,6 +6,7 @@ import {
   Tooltip,
   Rectangle,
   Dot,
+  ResponsiveContainer,
 } from "recharts";
 
 function UserSessions({ data }) {
@@ -57,37 +58,39 @@ function UserSessions({ data }) {
 
   return (
     <div className="user-sessions">
-      <LineChart width={300} height={260} data={lineData}>
-        <text x={55} y={42} fill="rgba(255, 255, 255, 0.5)">
-          <tspan>Durée moyenne des</tspan>
-          <tspan x={55} dy={22}>
-            sessions
-          </tspan>
-        </text>
-        <Tooltip content={<CustomTooltip />} cursor={<CustomCursor />} />
-        <XAxis
-          dataKey="day"
-          axisLine={false}
-          tickLine={false}
-          stroke="rgba(255, 255, 255, 0.5)"
-          tickMargin={-5}
-        />
-        <YAxis domain={["dataMin - 20", "dataMax + 40"]} hide />
-        <Line
-          type="natural"
-          dataKey="sessionLength"
-          stroke="url(#gradient)"
-          dot={false}
-          strokeWidth={2}
-          activeDot={<CustomDot />}
-        />
-        <defs>
-          <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(255, 255, 255, 0.4)" />
-            <stop offset="100%" stopColor="rgba(255, 255, 255, 1)" />
-          </linearGradient>
-        </defs>
-      </LineChart>
+      <ResponsiveContainer width="110%" height="100%">
+        <LineChart data={lineData} margin={{ left: -25 }}>
+          <text x={35} y={42} fill="rgba(255, 255, 255, 0.5)">
+            <tspan>Durée moyenne des</tspan>
+            <tspan x={35} dy={22}>
+              sessions
+            </tspan>
+          </text>
+          <Tooltip content={<CustomTooltip />} cursor={<CustomCursor />} />
+          <XAxis
+            dataKey="day"
+            axisLine={false}
+            tickLine={false}
+            stroke="rgba(255, 255, 255, 0.5)"
+            tickMargin={-5}
+          />
+          <YAxis domain={["dataMin - 20", "dataMax + 40"]} hide />
+          <Line
+            type="natural"
+            dataKey="sessionLength"
+            stroke="url(#gradient)"
+            dot={false}
+            strokeWidth={2}
+            activeDot={<CustomDot />}
+          />
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="rgba(255, 255, 255, 0.4)" />
+              <stop offset="100%" stopColor="rgba(255, 255, 255, 1)" />
+            </linearGradient>
+          </defs>
+        </LineChart>
+      </ResponsiveContainer>
     </div>
   );
 }

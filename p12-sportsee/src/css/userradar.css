@@ -1,7 +1,13 @@
 .user-radar {
     font-size: 12px;
-    width: 260px;
-    height: 260px;
+    grid-column: 2;
+    grid-row: 3;
+    min-width: 200px;
+    min-height: 200px; 
+
+    max-width: 260px;
+    max-height: 260px;
+
     border-radius: 5px;
     background-color: var(--black-intensity);
 }

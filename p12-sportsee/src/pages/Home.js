@@ -26,7 +26,8 @@ function Home() {
 
   // Effet qui se déclenche lorsque le composant est monté
   useEffect(() => {
-    const userDataInstance = new UserDataModelAPI(userId);
+    // On instancie le modèle mock ou API
+    const userDataInstance = new UserDataModelAPI(userId, navigate);
     // const userDataInstance = new UserDataModelMock(userId);
 
     // Fonction asynchrone pour récupérer les données de l'utilisateur
@@ -51,8 +52,15 @@ function Home() {
         setUserAverageSessions(userAverageSessionsResult);
         setUserPerformance(userPerformanceResult);
       } catch (error) {
-        // En cas d'erreur, redirige vers une page d'erreur
-        navigate("/error");
+        if (error.status === 404) {
+          // Erreur 404
+          const errorType = "404";
+          navigate(`/error/${errorType}`);
+        } else {
+          // Erreur de backend
+          const errorType = "BackEnd";
+          navigate(`/error/${errorType}`);
+        }
       }
     };
     fetchData();

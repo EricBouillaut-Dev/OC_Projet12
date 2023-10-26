@@ -1,7 +1,7 @@
 .user-score {
     grid-column: 3;
     grid-row: 3;
-    min-width: 200px;
+    min-width: 230px;
     min-height: 200px; 
 
     max-width: 260px;

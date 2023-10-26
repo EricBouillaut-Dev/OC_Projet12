@@ -5,6 +5,7 @@ import Home from "../pages/Home";
 import NavBar from "../components/NavBar";
 import LeftBar from "../components/LeftBar";
 import Error from "../pages/Error";
+import ErrorPage from "../pages/ErrorPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomeUser />} />
           <Route path="/user/:userId" element={<Home />} />
+          <Route path="/error/:errorType" element={<ErrorPage />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </div>

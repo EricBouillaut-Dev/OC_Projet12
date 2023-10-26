@@ -34,7 +34,11 @@ class UserDataModelAPI {
     try {
       const response = await fetch(url);
       if (!response.ok) {
-        throw new Error("La requête a échoué.");
+        // Renvoyer des informations supplémentaires
+        throw {
+          status: response.status,
+          message: "La requête a échoué.",
+        };
       }
       const result = await response.json();
       return result.data;
@@ -50,21 +54,21 @@ class UserDataModelMock {
   }
 
   async getUserData() {
-    return this.userId === mockUserData[0].id ? mockUserData[0] : null; // Remplacez cela par la logique pour récupérer des données simulées
+    return this.userId === mockUserData[0].id ? mockUserData[0] : null;
   }
 
   async getUserActivity() {
-    return this.userId === mockUserData[0].id ? mockUserActivity[0] : null; // Remplacez cela par la logique pour récupérer des données simulées
+    return this.userId === mockUserData[0].id ? mockUserActivity[0] : null;
   }
 
   async getUserAverageSessions() {
     return this.userId === mockUserData[0].id
       ? mockUserAverageSessions[0]
-      : null; // Remplacez cela par la logique pour récupérer des données simulées
+      : null;
   }
 
   async getUserPerformance() {
-    return this.userId === mockUserData[0].id ? mockUserPerformance[0] : null; // Remplacez cela par la logique pour récupérer des données simulées
+    return this.userId === mockUserData[0].id ? mockUserPerformance[0] : null;
   }
 }
 

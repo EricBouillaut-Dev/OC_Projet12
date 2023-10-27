@@ -10,77 +10,58 @@ import Flamme from "../assets/flamme.svg";
 import Grenade from "../assets/grenade.svg";
 import Pomme from "../assets/pomme.svg";
 import Burger from "../assets/burger.svg";
-import { UserDataModelAPI, UserDataModelMock } from "../datas/DataService";
+import getUserInstance from "../datas/DataService";
 import Icon from "../components/Icon";
+import Error from "../pages/Error";
 
 function Home() {
   // États pour stocker les données de l'utilisateur
-  const [userData, setUserData] = useState(null);
-  const [userActivity, setUserActivity] = useState(null);
-  const [userAverageSessions, setUserAverageSessions] = useState(null);
-  const [userPerformance, setUserPerformance] = useState(null);
+  const [user, setUser] = useState(null);
 
   // Obtient le "userId" à partir de l'URL
   const { userId } = useParams();
-  const navigate = useNavigate();
+  const [error, setError] = useState(null);
 
   // Effet qui se déclenche lorsque le composant est monté
   useEffect(() => {
-    // On instancie le modèle mock ou API
-    const userDataInstance = new UserDataModelAPI(userId, navigate);
-    // const userDataInstance = new UserDataModelMock(userId);
-
     // Fonction asynchrone pour récupérer les données de l'utilisateur
     const fetchData = async () => {
       try {
-        // Récupère plusieurs ensembles de données en parallèle
-        const [
-          userDataResult,
-          userActivityResult,
-          userAverageSessionsResult,
-          userPerformanceResult,
-        ] = await Promise.all([
-          userDataInstance.getUserData(),
-          userDataInstance.getUserActivity(),
-          userDataInstance.getUserAverageSessions(),
-          userDataInstance.getUserPerformance(),
-        ]);
-
-        // Stocke les données dans les états correspondants
-        setUserData(userDataResult);
-        setUserActivity(userActivityResult);
-        setUserAverageSessions(userAverageSessionsResult);
-        setUserPerformance(userPerformanceResult);
+        const userInstance = await getUserInstance(userId);
+        setUser(userInstance);
       } catch (error) {
-        if (error.status === 404) {
-          // Erreur 404
-          const errorType = "404";
-          navigate(`/error/${errorType}`);
+        if (error.status == "404") {
+          setError({ type: "404", msg: "La page n'existe pas" });
         } else {
-          // Erreur de backend
-          const errorType = "BackEnd";
-          navigate(`/error/${errorType}`);
+          setError({
+            type: "Backend",
+            msg: "Problème de connexion avec le backend.",
+          });
         }
       }
     };
     fetchData();
-  }, [userId, navigate]);
+  }, [userId]);
+
+  if (error) {
+    return <Error type={error.type} msg={error.msg} />;
+  }
 
   return (
     <>
       {/* Affiche le contenu de la page uniquement si toutes les données sont disponibles */}
-      {userData && userActivity && userAverageSessions && userPerformance && (
+      {user && (
         <div className="home-content">
-          <UserData data={userData} />
-          <UserActivity data={userActivity} />
-          <UserSessions data={userAverageSessions} />
-          <UserRadar data={userPerformance} />
-          <UserScore data={userData} />
+          <UserData data={user} />
+          <UserActivity data={user.activity} />
+          <UserSessions data={user.averageSessions} />
+          <UserRadar data={user.performance} />
+          <UserScore data={user} />
           <div className="home-right">
             {/* Cartes d'informations avec des icônes personnalisées */}
             <UserCard
               key="card01"
-              data={`${(userData.keyData.calorieCount / 1000).toLocaleString(
+              data={`${(user.keyData.calorieCount / 1000).toLocaleString(
                 "fr-FR"
               )}kCal`}
               title="Calories"
@@ -93,7 +74,7 @@ function Home() {
             />
             <UserCard
               key="card02"
-              data={`${userData.keyData.proteinCount}g`}
+              data={`${user.keyData.proteinCount}g`}
               title="Proteines"
               icon={
                 <Icon
@@ -104,7 +85,7 @@ function Home() {
             />
             <UserCard
               key="card03"
-              data={`${userData.keyData.carbohydrateCount}g`}
+              data={`${user.keyData.carbohydrateCount}g`}
               title="Glucides"
               icon={
                 <Icon image={Pomme} backgroundColor="rgba(249, 206, 35, 0.1)" />
@@ -112,7 +93,7 @@ function Home() {
             />
             <UserCard
               key="card04"
-              data={`${userData.keyData.lipidCount}g`}
+              data={`${user.keyData.lipidCount}g`}
               title="Lipides"
               icon={
                 <Icon

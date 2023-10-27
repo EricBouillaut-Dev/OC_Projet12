@@ -46,9 +46,9 @@ function UserSessions({ data }) {
   };
 
   const newXaxis = ["L", "M", "M", "J", "V", "S", "D"];
-  const lineData = data.sessions.map((session, index) => ({
+  const lineData = data.map((item, index) => ({
     day: newXaxis[index],
-    sessionLength: session.sessionLength,
+    sessionLength: item.sessionLength,
   }));
   const firstDayValue = lineData[0].sessionLength;
   const lastDayValue = lineData[lineData.length - 1].sessionLength;

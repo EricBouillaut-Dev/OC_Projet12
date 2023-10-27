@@ -1,75 +1,35 @@
-import {
-  mockUserData,
-  mockUserActivity,
-  mockUserAverageSessions,
-  mockUserPerformance,
-} from "./mockData";
+import UserDataModelAPI from "../datas/UserDataModelAPI";
+import UserDataModelMock from "../datas/UserDataModelMock";
+import User from "../datas/User";
 
-class UserDataModelAPI {
-  constructor(userId) {
-    this.userId = userId;
-  }
+const useMock = false;
 
-  async getUserData() {
-    return this.fetchData(`http://localhost:5000/user/${this.userId}`);
-  }
+async function getUserInstance(userId) {
+  const userDataInstance = useMock
+    ? new UserDataModelMock(userId)
+    : new UserDataModelAPI(userId);
+  try {
+    const [
+      userDataResult,
+      userActivityResult,
+      userAverageSessionsResult,
+      userPerformanceResult,
+    ] = await Promise.all([
+      userDataInstance.getUserData(),
+      userDataInstance.getUserActivity(),
+      userDataInstance.getUserAverageSessions(),
+      userDataInstance.getUserPerformance(),
+    ]);
 
-  async getUserActivity() {
-    return this.fetchData(`http://localhost:5000/user/${this.userId}/activity`);
-  }
-
-  async getUserAverageSessions() {
-    return this.fetchData(
-      `http://localhost:5000/user/${this.userId}/average-sessions`
+    return new User(
+      userDataResult,
+      userActivityResult,
+      userAverageSessionsResult,
+      userPerformanceResult
     );
-  }
-
-  async getUserPerformance() {
-    return this.fetchData(
-      `http://localhost:5000/user/${this.userId}/performance`
-    );
-  }
-
-  async fetchData(url) {
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        // Renvoyer des informations supplémentaires
-        throw {
-          status: response.status,
-          message: "La requête a échoué.",
-        };
-      }
-      const result = await response.json();
-      return result.data;
-    } catch (error) {
-      throw error;
-    }
+  } catch (error) {
+    throw error;
   }
 }
 
-class UserDataModelMock {
-  constructor(userId) {
-    this.userId = userId;
-  }
-
-  async getUserData() {
-    return this.userId === mockUserData[0].id ? mockUserData[0] : null;
-  }
-
-  async getUserActivity() {
-    return this.userId === mockUserData[0].id ? mockUserActivity[0] : null;
-  }
-
-  async getUserAverageSessions() {
-    return this.userId === mockUserData[0].id
-      ? mockUserAverageSessions[0]
-      : null;
-  }
-
-  async getUserPerformance() {
-    return this.userId === mockUserData[0].id ? mockUserPerformance[0] : null;
-  }
-}
-
-export { UserDataModelAPI, UserDataModelMock };
+export default getUserInstance;

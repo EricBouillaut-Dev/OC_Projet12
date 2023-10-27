@@ -11,7 +11,7 @@ function UserScore({ data }) {
     return null;
   }
 
-  const percentageValue = (data.todayScore || data.score) * 100;
+  const percentageValue = data.score * 100;
 
   const scoreData = [
     {

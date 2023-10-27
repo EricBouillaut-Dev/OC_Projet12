@@ -13,10 +13,10 @@ function UserActivity({ data }) {
   if (!data) {
     return null;
   }
-  const chartData = data.sessions.map((session, index) => ({
+  const chartData = data.map((item, index) => ({
     dayNumber: index + 1,
-    kilogram: session.kilogram,
-    calories: session.calories,
+    kilogram: item.kilogram,
+    calories: item.calories,
   }));
   const CustomTooltip = ({ active, payload }) => {
     if (active) {
@@ -33,7 +33,7 @@ function UserActivity({ data }) {
 
   return (
     <div className="activity">
-      <ResponsiveContainer width="100%" height="95%">
+      <ResponsiveContainer width="100%" maxHeight={300}>
         <BarChart
           data={chartData}
           barGap={10}

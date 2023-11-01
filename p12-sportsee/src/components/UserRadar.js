@@ -24,27 +24,12 @@ function UserRadar({ data }) {
   if (!data) {
     return null;
   }
-
-  const kindLabels = data.kind;
-
-  const transformedData = data.data.map((item) => ({
-    kind: kindLabels[item.kind]
-      .replace("cardio", "Cardio")
-      .replace("strength", "Force")
-      .replace("endurance", "Endurance")
-      .replace("speed", "Vitesse")
-      .replace("intensity", "Intensité")
-      .replace("energy", "Energie"),
-    value: item.value,
-  }));
-
-  transformedData.reverse();
-
+  console.log(data);
   return (
     <div className="user-radar">
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart outerRadius="70%" data={transformedData}>
-          <PolarGrid radialLines={false} polarRadius={[12, 25, 47, 69, 91]} />
+        <RadarChart cx="50%" cy="50%" outerRadius="63%" data={data}>
+          <PolarGrid radialLines={false} />
           <PolarAngleAxis dataKey="kind" tick={CustomTick} />
           <Radar name="Stats" dataKey="value" fill="rgba(255, 1, 1, 0.7)" />
         </RadarChart>

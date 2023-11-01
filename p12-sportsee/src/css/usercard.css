@@ -1,8 +1,11 @@
 .user-card {
-    padding: 0 0.5rem 0 0.5rem;
+    padding: 0 2vh;
+    gap: 1vh;
     display: flex;
     cursor: pointer;
     align-items: center;
+    max-width: 255px;
+    max-height: 125px;
     width: 100%;
     height: 100%;
     background-color: var(--background);

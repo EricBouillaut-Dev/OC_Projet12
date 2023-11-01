@@ -18,6 +18,9 @@
     grid-column: 1 / 4;
     grid-row: 2 / 3;
     background-color: var(--background);
+    padding: 2vh 0 2vh 0;
+    min-width: 575px;
+    /* height: 350px; */
 }
 
 .recharts-legend-item.recharts-legend-item.legend-item-0 {

@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import {
   BarChart,
   Bar,
@@ -13,11 +14,13 @@ function UserActivity({ data }) {
   if (!data) {
     return null;
   }
+
   const chartData = data.map((item, index) => ({
     dayNumber: index + 1,
     kilogram: item.kilogram,
     calories: item.calories,
   }));
+
   const CustomTooltip = ({ active, payload }) => {
     if (active) {
       return (
@@ -27,13 +30,12 @@ function UserActivity({ data }) {
         </div>
       );
     }
-
     return null;
   };
 
   return (
     <div className="activity">
-      <ResponsiveContainer width="100%" maxHeight={300}>
+      <ResponsiveContainer width="100%" maxHeight={320}>
         <BarChart
           data={chartData}
           barGap={10}
@@ -49,7 +51,8 @@ function UserActivity({ data }) {
             tickLine={false}
             tick={{ stroke: "#DEDEDE", fontSize: 14 }}
             axisLine={{ stroke: "#DEDEDE" }}
-            padding={{ left: -45, right: -45 }}
+            scale="point"
+            padding={{ left: 10, right: 10 }}
           />
           <YAxis
             orientation="right"
@@ -74,7 +77,6 @@ function UserActivity({ data }) {
             barSize={7}
             radius={[10, 10, 0, 0]}
           />
-
           <Legend
             verticalAlign="top"
             align="right"

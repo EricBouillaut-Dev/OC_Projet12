@@ -59,10 +59,10 @@ function UserSessions({ data }) {
   return (
     <div className="user-sessions">
       <ResponsiveContainer width="110%" height="100%">
-        <LineChart data={lineData} margin={{ left: -25 }}>
-          <text x={35} y={42} fill="rgba(255, 255, 255, 0.5)">
+        <LineChart data={lineData} margin={{ left: -20 }}>
+          <text x="10%" y="15%" fill="rgba(255, 255, 255, 0.5)">
             <tspan>Durée moyenne des</tspan>
-            <tspan x={35} dy={22}>
+            <tspan x="10%" y="23%">
               sessions
             </tspan>
           </text>

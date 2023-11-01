@@ -54,9 +54,11 @@ function Home() {
         <div className="home-content">
           <UserData data={user} />
           <UserActivity data={user.activity} />
-          <UserSessions data={user.averageSessions} />
-          <UserRadar data={user.performance} />
-          <UserScore data={user} />
+          <div className="home-bottom">
+            <UserSessions data={user.averageSessions} />
+            <UserRadar data={user.performance} />
+            <UserScore data={user.score} />
+          </div>
           <div className="home-right">
             {/* Cartes d'informations avec des icônes personnalisées */}
             <UserCard

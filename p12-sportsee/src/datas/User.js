@@ -15,10 +15,19 @@ class User {
     };
     this.activity = activityData.sessions;
     this.averageSessions = averageSessionsData.sessions;
-    this.performance = {
-      kind: performanceData.kind,
-      data: performanceData.data,
+    this.kindLabels = {
+      1: "Cardio",
+      2: "Energie",
+      3: "Endurance",
+      4: "Force",
+      5: "Vitesse",
+      6: "Intensité",
     };
+    this.performance = performanceData.data.map((item) => ({
+      kind: this.kindLabels[item.kind],
+      value: item.value,
+    }));
+    this.performance.reverse();
   }
 }
 

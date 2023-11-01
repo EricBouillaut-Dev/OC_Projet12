@@ -1,3 +1,4 @@
+import useChartResize from "../utils/useChartResize";
 import {
   LineChart,
   Line,
@@ -10,6 +11,7 @@ import {
 } from "recharts";
 
 function UserSessions({ data }) {
+  const sessionsRef = useChartResize();
   if (!data) {
     return null;
   }
@@ -57,7 +59,7 @@ function UserSessions({ data }) {
   lineData.push({ day: "", sessionLength: lastDayValue + 1 });
 
   return (
-    <div className="user-sessions">
+    <div className="user-sessions" ref={sessionsRef}>
       <ResponsiveContainer width="110%" height="100%">
         <LineChart data={lineData} margin={{ left: -20 }}>
           <text x="10%" y="15%" fill="rgba(255, 255, 255, 0.5)">

@@ -1,4 +1,4 @@
-import React from "react";
+import useChartResize from "../utils/useChartResize";
 import {
   Radar,
   RadarChart,
@@ -21,12 +21,12 @@ const CustomTick = ({ payload, x, y, cy, textAnchor }) => (
 );
 
 function UserRadar({ data }) {
+  const sessionsRef = useChartResize();
   if (!data) {
     return null;
   }
-  console.log(data);
   return (
-    <div className="user-radar">
+    <div className="user-radar" ref={sessionsRef}>
       <ResponsiveContainer width="100%" height="100%">
         <RadarChart cx="50%" cy="50%" outerRadius="63%" data={data}>
           <PolarGrid radialLines={false} />

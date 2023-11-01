@@ -2,7 +2,7 @@ import UserDataModelAPI from "../datas/UserDataModelAPI";
 import UserDataModelMock from "../datas/UserDataModelMock";
 import User from "../datas/User";
 
-const useMock = true;
+const useMock = false;
 
 async function getUserInstance(userId) {
   const userDataInstance = useMock

@@ -1,4 +1,4 @@
-import React from "react";
+import useChartResize from "../utils/useChartResize";
 import {
   ResponsiveContainer,
   RadialBar,
@@ -7,6 +7,7 @@ import {
 } from "recharts";
 
 function UserScore({ data }) {
+  const sessionsRef = useChartResize();
   if (!data) {
     return null;
   }
@@ -24,7 +25,7 @@ function UserScore({ data }) {
   const endAngle = startAngle - 360;
 
   return (
-    <div className="user-score">
+    <div className="user-score" ref={sessionsRef}>
       <ResponsiveContainer width="100%" height="100%">
         <RadialBarChart
           cx="50%"

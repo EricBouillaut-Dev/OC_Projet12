@@ -10,9 +10,10 @@
     min-width: 175px;
     min-height: 175px; 
 
-    /* max-width: 260px; */
+    max-width: 260px;
     max-height: 260px;
 
     border-radius: 5px;
     background-color: var(--black-intensity);
 }
+

@@ -30,6 +30,7 @@ function Home() {
         const userInstance = await getUserInstance(userId);
         setUser(userInstance);
       } catch (error) {
+        // Gestion des erreurs
         if (error.status == "404") {
           setError({ type: "404", msg: "La page n'existe pas" });
         } else {
@@ -54,6 +55,7 @@ function Home() {
         <div className="home-content">
           <UserData data={user.userInfos} />
           <UserActivity data={user.activity} />
+          {/* 3 graphiques du bas */}
           <div className="home-bottom">
             <UserSessions data={user.averageSessions} />
             <UserRadar data={user.performance} />

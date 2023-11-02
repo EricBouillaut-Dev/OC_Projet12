@@ -1,9 +1,4 @@
 .user-score {
-    /* margin-top: 25px; */
-    /* margin: auto 0 auto 0; */
-
-    /* grid-column: 3;
-    grid-row: 3; */
     flex-basis: 33%;
     min-width: 175px;
     min-height: 175px; 

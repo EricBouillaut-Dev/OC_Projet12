@@ -7,7 +7,7 @@ import {
 } from "recharts";
 
 function UserScore({ data }) {
-  const sessionsRef = useChartResize();
+  const sessionsRef = useChartResize(); // Utilisation du hook useChartResize pour le graphique en barres
   if (!data) {
     return null;
   }
@@ -15,6 +15,7 @@ function UserScore({ data }) {
   const percentageValue = data * 100;
 
   const scoreData = [
+    // Création d'un tableau des données du graphique en barres
     {
       name: "Score",
       value: percentageValue,
@@ -33,7 +34,6 @@ function UserScore({ data }) {
           startAngle={startAngle}
           endAngle={endAngle}
           innerRadius="80%"
-          // outRadius={"70%"}
           barSize={10}
           data={scoreData}
           fill="#FF0101"

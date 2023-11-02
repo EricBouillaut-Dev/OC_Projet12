@@ -20,7 +20,6 @@
     background-color: var(--background);
     padding: 2vh 0 2vh 0;
     min-width: 575px;
-    /* max-height: 315px; */
 }
 
 .recharts-legend-item.recharts-legend-item.legend-item-0 {

@@ -7,7 +7,9 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const CustomTick = ({ payload, x, y, cy, textAnchor }) => (
+const CustomTick = (
+  { payload, x, y, cy, textAnchor } // Création d'un composant CustomTick pour les ticks du graphique
+) => (
   <text
     y={y + (y - cy) / 10}
     className="recharts-text recharts-polar-angle-axis-tick-value"
@@ -21,12 +23,13 @@ const CustomTick = ({ payload, x, y, cy, textAnchor }) => (
 );
 
 function UserRadar({ data }) {
-  const [sessionsRef, containerSize] = useResponsiveChart();
+  const [sessionsRef, containerSize] = useResponsiveChart(); // Utilisation du hook useResponsiveChart pour le graphique radar
 
-  const outerRadius =
+  const outerRadius = // Calcul du rayon du graphique radar
     Math.min(containerSize.width, containerSize.height) * 0.33;
 
   const polarRadii = [
+    // Création d'un tableau des cercles polygonaux du graphique radar
     outerRadius * 0.12,
     outerRadius * 0.25,
     outerRadius * 0.5,

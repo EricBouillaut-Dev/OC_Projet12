@@ -11,11 +11,12 @@ import {
 } from "recharts";
 
 function UserSessions({ data }) {
-  const sessionsRef = useChartResize();
+  const sessionsRef = useChartResize(); // Utilisation du hook useChartResize pour le graphique en barres
   if (!data) {
     return null;
   }
   const CustomTooltip = ({ active, payload }) => {
+    // Création d'un composant CustomTooltip pour l'info bulle du graphique
     if (active) {
       return (
         <div className="custom-tooltip_line">
@@ -28,6 +29,7 @@ function UserSessions({ data }) {
   };
 
   const CustomCursor = ({ points, width }) => {
+    // Création d'un composant CustomCursor pour le curseur du graphique
     const { x } = points[0];
     return (
       <Rectangle fill="rgba(0, 0, 0, 0.1)" x={x} width={width} height={260} />
@@ -35,6 +37,7 @@ function UserSessions({ data }) {
   };
 
   const CustomDot = ({ cx, cy }) => {
+    // Création d'un composant CustomDot pour le point du graphique
     return (
       <Dot
         cx={cx}
@@ -47,16 +50,17 @@ function UserSessions({ data }) {
     );
   };
 
-  const newXaxis = ["L", "M", "M", "J", "V", "S", "D"];
+  const newXaxis = ["L", "M", "M", "J", "V", "S", "D"]; // Création d'un nouveau tableau pour l'axe X
   const lineData = data.map((item, index) => ({
+    // Création d'un tableau des données du graphique en barres
     day: newXaxis[index],
     sessionLength: item.sessionLength,
   }));
-  const firstDayValue = lineData[0].sessionLength;
-  const lastDayValue = lineData[lineData.length - 1].sessionLength;
+  const firstDayValue = lineData[0].sessionLength; // Calcul de la valeur du premier jour
+  const lastDayValue = lineData[lineData.length - 1].sessionLength; // Calcul de la valeur du dernier jour
 
-  lineData.unshift({ day: "", sessionLength: firstDayValue - 1 });
-  lineData.push({ day: "", sessionLength: lastDayValue + 1 });
+  lineData.unshift({ day: "", sessionLength: firstDayValue - 1 }); // Ajout d'un jour vide au début du tableau
+  lineData.push({ day: "", sessionLength: lastDayValue + 1 }); // Ajout d'un jour vide à la fin du tableau
 
   return (
     <div className="user-sessions" ref={sessionsRef}>

@@ -11,9 +11,10 @@ import {
 } from "recharts";
 
 function UserActivity({ data }) {
-  const padding = useDynamicPadding();
+  const padding = useDynamicPadding(); // Utilisation du hook useDynamicPadding pour le padding du graphique
 
   const CustomTooltip = ({ active, payload }) => {
+    // Création d'un composant CustomTooltip pour l'info bulle du graphique
     if (active) {
       return (
         <div className="custom-tooltip_bar">

@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 
+// Ce hook fournit un padding dynamique basé sur la largeur de la fenêtre.
 export default function useDynamicPadding() {
   const [padding, setPadding] = useState({ left: -40, right: -40 });
 
   useEffect(() => {
+    // Calcule le padding en fonction de la largeur de la fenêtre.
     function calculatePadding(windowWidth) {
       const baseWidth = 1100;
       if (windowWidth < baseWidth) return { left: -25, right: -25 };
@@ -17,6 +19,7 @@ export default function useDynamicPadding() {
       };
     }
 
+    // Met à jour le padding lors du redimensionnement de la fenêtre.
     function handleResize() {
       const windowWidth = window.innerWidth;
       const newPadding = calculatePadding(windowWidth);

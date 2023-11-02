@@ -27,7 +27,7 @@ class UserDataModelAPI {
     try {
       const response = await fetch(url);
       if (!response.ok) {
-        // Renvoyer des informations supplémentaires
+        // Gestion des erreurs
         throw {
           status: response.status,
           message: "La requête a échoué.",

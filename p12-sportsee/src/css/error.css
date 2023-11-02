@@ -4,9 +4,7 @@
     align-items: center;
     justify-content: space-evenly;
     height: 100vh;
-    /* text-align: center; */
     flex-basis: 100%;
-    /* gap: 5rem; */
     color: var(--red-SportSee);
   }
   

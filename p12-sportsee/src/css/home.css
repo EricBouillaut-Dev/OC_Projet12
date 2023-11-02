@@ -51,12 +51,10 @@
   display: flex;
   justify-content: space-between;
   gap: 3.5%;
-  /* margin-bottom: 30px; */
 }
 .home-right {
   grid-column: 4;
   grid-row: 2 / 4;
-  /* margin-bottom: 30px; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;

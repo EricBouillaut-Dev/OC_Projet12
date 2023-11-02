@@ -17,3 +17,16 @@
     background-color: var(--black-intensity);
 }
 
+@media (max-width: 1250px) {
+    .recharts-text.recharts-polar-angle-axis-tick-value {
+        font-size: 10px;
+        color: var(--white);
+    }
+}
+
+@media (max-width: 1100px) {
+    .recharts-text.recharts-polar-angle-axis-tick-value {
+        font-size: 9px;
+        color: var(--white);
+    }
+}

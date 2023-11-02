@@ -35,7 +35,7 @@ function UserActivity({ data }) {
 
   return (
     <div className="activity">
-      <ResponsiveContainer width="100%" maxHeight={320}>
+      <ResponsiveContainer width="100%" minHeight={150} maxHeight={320}>
         <BarChart
           data={chartData}
           barGap={10}

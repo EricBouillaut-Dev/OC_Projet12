@@ -4,7 +4,8 @@
     gap: 12px;
 }
 
-.user-title p {
+.user-content {
+    margin: 2% 0 1% 2px;
     font-size: 18px;
     font-weight: 400;
 }
@@ -15,6 +16,8 @@
 .user-title {
     grid-column: 1 / 5;
     grid-row: 1;
-    margin-bottom: 1%;
+    margin-bottom: 3%;
 }
+
+
 

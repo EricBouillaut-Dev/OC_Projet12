@@ -40,9 +40,9 @@ function UserScore({ data }) {
         >
           <PolarAngleAxis type="number" domain={[0, 100]} tick={false} />
           <RadialBar dataKey="value" cornerRadius={5} />
-          <circle cx="50%" cy="50%" r="35%" fill="white" />
+          <circle cx="50%" cy="50%" r="36%" fill="white" />
           <text textAnchor="middle" alignmentBaseline="middle">
-            <tspan x="50" y="40" fontSize="15" fill="#20253A">
+            <tspan x="20%" y="15%" fontSize="15" fill="#20253A">
               Score
             </tspan>
             <tspan

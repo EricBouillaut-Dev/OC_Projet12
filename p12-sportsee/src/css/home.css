@@ -37,7 +37,7 @@
   
   .home-content {
     display: grid;
-    margin: 4.5% 6.5%;
+    margin: 3.5% 7.4% 6% 7.4%;
     width: 100%;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 3vh;
@@ -50,11 +50,13 @@
   grid-row: 3 / 4;
   display: flex;
   justify-content: space-between;
-  gap: 20px;
+  gap: 3.5%;
+  /* margin-bottom: 30px; */
 }
 .home-right {
   grid-column: 4;
   grid-row: 2 / 4;
+  /* margin-bottom: 30px; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;

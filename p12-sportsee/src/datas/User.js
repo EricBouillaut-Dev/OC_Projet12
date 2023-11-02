@@ -13,7 +13,11 @@ class User {
       carbohydrateCount: mainData.keyData.carbohydrateCount,
       lipidCount: mainData.keyData.lipidCount,
     };
-    this.activity = activityData.sessions;
+    this.activity = activityData.sessions.map((item, index) => ({
+      dayNumber: index + 1,
+      kilogram: item.kilogram,
+      calories: item.calories,
+    }));
     this.averageSessions = averageSessionsData.sessions;
     this.kindLabels = {
       1: "Cardio",

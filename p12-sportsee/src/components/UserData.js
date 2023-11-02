@@ -6,11 +6,10 @@ function UserData({ data }) {
     return null;
   }
 
-  const { userInfos } = data;
   return (
     <div className="user-title">
       <h2>
-        Bonjour <span className="user-info">{userInfos.firstName}</span>
+        Bonjour <span className="user-info">{data.firstName}</span>
       </h2>
       <p className="user-content">
         Félicitation ! Vous avez explosé vos objectifs hier

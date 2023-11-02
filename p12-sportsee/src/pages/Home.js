@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import UserData from "../components/UserData";
 import UserActivity from "../components/UserActivity";
 import UserSessions from "../components/UserSessions";
@@ -52,7 +52,7 @@ function Home() {
       {/* Affiche le contenu de la page uniquement si toutes les données sont disponibles */}
       {user && (
         <div className="home-content">
-          <UserData data={user} />
+          <UserData data={user.userInfos} />
           <UserActivity data={user.activity} />
           <div className="home-bottom">
             <UserSessions data={user.averageSessions} />

@@ -1,13 +1,18 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
-function useChartResize() {
+function useResponsiveChart() {
   const chartRef = useRef(null);
+  const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
     function handleResize() {
       if (chartRef.current) {
         const width = chartRef.current.clientWidth;
         chartRef.current.style.height = `${width}px`;
+
+        const { width: currentWidth, height } =
+          chartRef.current.getBoundingClientRect();
+        setContainerSize({ width: currentWidth, height });
       }
     }
 
@@ -19,7 +24,7 @@ function useChartResize() {
     };
   }, []);
 
-  return chartRef;
+  return [chartRef, containerSize];
 }
 
-export default useChartResize;
+export default useResponsiveChart;

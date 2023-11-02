@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import useDynamicPadding from "../utils/useDynamicPadding";
 import {
   BarChart,
   Bar,
@@ -11,15 +11,7 @@ import {
 } from "recharts";
 
 function UserActivity({ data }) {
-  if (!data) {
-    return null;
-  }
-
-  const chartData = data.map((item, index) => ({
-    dayNumber: index + 1,
-    kilogram: item.kilogram,
-    calories: item.calories,
-  }));
+  const padding = useDynamicPadding();
 
   const CustomTooltip = ({ active, payload }) => {
     if (active) {
@@ -33,11 +25,15 @@ function UserActivity({ data }) {
     return null;
   };
 
+  if (!data) {
+    return null;
+  }
+
   return (
     <div className="activity">
       <ResponsiveContainer width="100%" minHeight={150} maxHeight={320}>
         <BarChart
-          data={chartData}
+          data={data}
           barGap={10}
           margin={{ top: 70, right: 32, left: 48, bottom: 10 }}
         >
@@ -51,8 +47,7 @@ function UserActivity({ data }) {
             tickLine={false}
             tick={{ stroke: "#DEDEDE", fontSize: 14 }}
             axisLine={{ stroke: "#DEDEDE" }}
-            scale="point"
-            padding={{ left: 10, right: 10 }}
+            padding={padding}
           />
           <YAxis
             orientation="right"
